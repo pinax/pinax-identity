@@ -1,8 +1,7 @@
 from oidc_provider.lib.utils.oauth2 import extract_access_token
 from oidc_provider.models import Token
 
-from django.contrib import auth
-from django.utils.functional import SimpleLazyObject
+from django.contrib.auth.models import AnonymousUser
 
 
 class AuthenticationMiddleware:
@@ -25,7 +24,7 @@ class AuthenticationMiddleware:
 
     def unauthenticated(self, request):
         request.token = None
-        request.user = SimpleLazyObject(lambda: auth.get_user(request))
+        request.user = AnonymousUser()
 
     def authenticated(self, request, token):
         request.token = token
