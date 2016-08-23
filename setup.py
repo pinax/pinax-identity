@@ -16,7 +16,7 @@ setup(
     description="",
     name="pinax-identity",
     long_description=read("README.md"),
-    version="0.1.0",
+    version="0.2.0",
     url="http://github.com/pinax/pinax-identity/",
     license="MIT",
     packages=find_packages(),

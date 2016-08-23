@@ -17,6 +17,13 @@ Add to urls.py:
         ...
     ]
 
+Add authentication middleware to MIDDLEWARE_CLASSES:
+
+    MIDDLEWARE_CLASSES = [
+        "pinax.identity.middleware.AuthenticationMiddleware",
+        ...
+    ]
+
 Most likely you'll need to handle CORS, use django-cors-headers. Add the
 middleware to the top of MIDDLEWARE_CLASSES:
 
