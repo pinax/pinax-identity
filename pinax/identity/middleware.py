@@ -6,10 +6,15 @@ from django.contrib.auth.models import AnonymousUser
 
 class AuthenticationMiddleware:
 
-    def __init__(self, get_response):
-        self.get_response = get_response
+    def __init__(self, get_response=None):
+        if get_response:
+            self.get_response = get_response
 
     def __call__(self, request):
+        self.process_request(request)
+        return self.get_response(request)
+
+    def process_request(self, request):
         access_token = extract_access_token(request)
         try:
             token = Token.objects.get(access_token=access_token)
@@ -20,7 +25,6 @@ class AuthenticationMiddleware:
                 self.authenticated(request, token)
             else:
                 self.unauthenticated(request)
-        return self.get_response(request)
 
     def unauthenticated(self, request):
         request.token = None

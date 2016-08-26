@@ -1,0 +1,14 @@
+.eggs/
+build
+dist
+.coverage
+.tox
+MANIFEST
+*.pyc
+*.egg-info
+*.egg
+docs/_build/
+htmlcov/
+.python-version
+# Pycharm
+.idea
