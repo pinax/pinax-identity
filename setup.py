@@ -13,7 +13,7 @@ def read(*parts):
 setup(
     author="Pinax Developers",
     author_email="developers@pinaxproject.com",
-    description="",
+    description="a helper package for Open ID Connect authentication",
     name="pinax-identity",
     long_description=read("README.md"),
     version="0.2.0",
@@ -23,6 +23,10 @@ setup(
     package_data={
         "identity": []
     },
+    test_suite="runtests.runtests",
+    tests_require=[
+        "pytz==2016.6.1",
+    ],
     install_requires=[
         "django-oidc-provider==0.3.6",
     ],
